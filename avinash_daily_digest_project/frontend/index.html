@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Avinash’s Daily Digest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Avinash’s Daily Digest</h1>
+<input id="count" type="number" placeholder="How many videos?" />
+<button onclick="loadDigest()">Get Digest</button>
+<div id="results"></div>
+<script>
+async function loadDigest(){
+ let c=document.getElementById("count").value;
+ let res=await fetch("http://localhost:8000/digest/"+c);
+ let data=await res.json();
+ let div=document.getElementById("results");
+ div.innerHTML="";
+ data.videos.forEach(v=>{
+   div.innerHTML+=`<p><b>${v.title}</b><br>${v.channel}<br><a href="${v.url}" target="_blank">Watch</a></p>`;
+ });
+}
+</script>
+</body>
+</html>
