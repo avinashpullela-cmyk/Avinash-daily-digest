@@ -13,7 +13,7 @@
 <script>
 async function loadDigest(){
  let c=document.getElementById("count").value;
- let res=await fetch("http://localhost:8000/digest/"+c);
+ let res=await fetch("https://avinash-daily-digest.onrender.com/digest/"+c);
  let data=await res.json();
  let div=document.getElementById("results");
  div.innerHTML="";
